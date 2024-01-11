@@ -1,2 +1,5 @@
-package com.juaracoding.pages;public class SalesInputPage {
+package com.juaracoding.pages;
+
+public class SalesInputPage {
+
 }

@@ -1,2 +1,4 @@
-package com.juaracoding.pages;public class AdminViewExportPage {
+package com.juaracoding.pages;
+
+public class AdminViewExportPage {
 }
