@@ -1,4 +1,5 @@
-Project Tugas Akhir QA RPA JuaraCoding
+Project Tugas Akhir QA RPA JuaraCoding<br/>
+
 === Kelompok 3 ===
 - Syaharudin Ikhsan Majid
 - ASTRIN INDAH
@@ -6,7 +7,7 @@ Project Tugas Akhir QA RPA JuaraCoding
 - YANUAR TARUNA LUTFI
 - FAJRI FADHLUL KHAIR
 
-* Modul:
+=== Modul ===
 1. Modul Login dan Logout (Sales)
 2. Modul Login dan Logout (Admin)
 3. Modul View & Export (Admin)
