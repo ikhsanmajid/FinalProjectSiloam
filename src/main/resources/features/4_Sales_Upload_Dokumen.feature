@@ -1,2 +1,3 @@
 Feature: Sales Upload Document
-  Scenario: Sales
+  Scenario: Sales Input Data
+    Given Sales
