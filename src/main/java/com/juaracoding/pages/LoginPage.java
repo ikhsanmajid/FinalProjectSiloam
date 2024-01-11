@@ -20,6 +20,17 @@ public class LoginPage {
     WebElement passwordInput;
     @FindBy()
     WebElement btnLogin;
+    @FindBy()
+    WebElement btnLogin;
+    @FindBy()
+    WebElement btnLogin;
+    //Contoh
+    @FindBy()
+    WebElement btnLogin;
+    //Contoh
+    @FindBy()
+    WebElement btnLogin;
+    //Contoh
 
 
 
