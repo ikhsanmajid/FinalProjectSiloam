@@ -25,6 +25,12 @@ public class LoginPage {
     @FindBy()
     WebElement btnLogin;
     //Contoh
+    @FindBy()
+    WebElement btnLogin;
+    //Contoh
+    @FindBy()
+    WebElement btnLogin;
+    //Contoh
 
 
 
