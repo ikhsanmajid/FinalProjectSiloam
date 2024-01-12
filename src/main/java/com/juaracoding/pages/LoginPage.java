@@ -14,11 +14,11 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy()
+    @FindBy(xpath = "//*[@id=\"page-container\"]/div/div[2]/form/div[1]/input")
     WebElement usernameInput;
-    @FindBy()
+    @FindBy(xpath = "//*[@id=\"page-container\"]/div/div[2]/form/div[2]/input")
     WebElement passwordInput;
-    @FindBy()
+    @FindBy(xpath = "//*[@id=\"page-container\"]/div/div[2]/form/div[3]/button")
     WebElement btnLogin;
     @FindBy()
     WebElement btnLogin;
