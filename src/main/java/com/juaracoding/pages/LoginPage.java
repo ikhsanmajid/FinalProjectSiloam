@@ -19,20 +19,4 @@ public class LoginPage {
     @FindBy(xpath = "//*[@id=\"page-container\"]/div/div[2]/form/div[2]/input")
     WebElement passwordInput;
     @FindBy(xpath = "//*[@id=\"page-container\"]/div/div[2]/form/div[3]/button")
-    WebElement btnLogin;
-    @FindBy()
-    WebElement btnLogin;
-    @FindBy()
-    WebElement btnLogin;
-    //Contoh
-    @FindBy()
-    WebElement btnLogin;
-    //Contoh
-    @FindBy()
-    WebElement btnLogin;
-    //Contoh
-
-
-
-
 }
