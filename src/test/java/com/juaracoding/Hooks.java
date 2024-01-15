@@ -13,32 +13,32 @@ import java.io.IOException;
 
 public class Hooks {
     static WebDriver driver;
-    static ExtentTest extentTest;
+    //static ExtentTest extentTest;
 
-    static ExtentReports reports = new ExtentReports("target/extent-reports.html");
+    //static ExtentReports reports = new ExtentReports("target/extent-reports.html");
 
     @Before
     public static void setUp(){
         DriverSingleton.getInstance("chrome");
         driver = DriverSingleton.getDriver();
-        TestCase[] test = TestCase.values();
-        extentTest = reports.startTest(test[Utils.testCount].getTestCaseName());
-        Utils.testCount++;
+        //TestCase[] test = TestCase.values();
+        //extentTest = reports.startTest(test[Utils.testCount].getTestCaseName());
+        //Utils.testCount++;
     }
 
-    @AfterStep
-    public void getResultStatus(Scenario scenario) throws IOException {
-        if(scenario.isFailed()){
-            String screenshotPath = Utils.getScreenshot(driver, scenario.getName().replace(" ", "_"));
-            extentTest.log(LogStatus.FAIL, scenario.getName()+"\n"+extentTest.addScreenCapture(screenshotPath));
-        }
-    }
+//    @AfterStep
+//    public void getResultStatus(Scenario scenario) throws IOException {
+//        if(scenario.isFailed()){
+//            String screenshotPath = Utils.getScreenshot(driver, scenario.getName().replace(" ", "_"));
+//            extentTest.log(LogStatus.FAIL, scenario.getName()+"\n"+extentTest.addScreenCapture(screenshotPath));
+//        }
+//    }
 
-    @After
-    public void endTestCase(){
-        reports.endTest(extentTest);
-        reports.flush();
-    }
+//    @After
+//    public void endTestCase(){
+//        reports.endTest(extentTest);
+//        reports.flush();
+//    }
 
     @AfterAll
     public static void finish(){

@@ -1,11 +1,44 @@
 package com.juaracoding.pages;
 
+import com.juaracoding.drivers.DriverSingleton;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class SalesInputPage {
+
+    @FindBy(xpath = "//input[@id='name']")
+    WebElement namaInput;
+
+    @FindBy(xpath = "//input[@id='no_bpjs']")
+    WebElement noBPJSInput;
+
+    @FindBy(xpath = "//input[@id='no_ktp']")
+    WebElement noKTPInput;
+
+    @FindBy(xpath = "//textarea[@id='address']")
+    WebElement alamatInput;
+
+    @FindBy(xpath = "//span[@id='select2-ktp_city-container']")
+    WebElement selectKotaKTPInput;
+
+    @FindBy(xpath = "//input[@role='textbox']")
+    WebElement searchBoxKotaInput;
+
+    @FindBy(xpath = "//ul[@id='select2-ktp_city-results']/li")
+    List<WebElement> listKotaKTPInput;
+
+    @FindBy(xpath = "//input[@id='origin_faskes']")
+    WebElement faskesAwalInput;
+
+    @FindBy(xpath = "//span[@id='select2-destination_faskes-container']")
+    WebElement selectFaskesTujuanInput;
+
+    @FindBy(xpath = "//ul[@id='select2-destination_faskes-results']/li")
+    List<WebElement> listFaskesTujuanInput;
 
     @FindBy(xpath = "//span[normalize-space()='Foto Faskes Awal']")
     WebElement fotoFaskesAwalBtnUpload;
@@ -52,6 +85,13 @@ public class SalesInputPage {
     @FindBy(xpath = "/html/body/div[5]/div[1]/div/div/div/div[2]/div/div/div[2]/a")
     WebElement submitBtnTtd;
 
+
+    private WebDriver driver;
+
+    public SalesInputPage(){
+        this.driver = DriverSingleton.getDriver();
+        PageFactory.initElements(driver, this);
+    }
 
 
 }
