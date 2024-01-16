@@ -71,6 +71,19 @@ Feature: Sales Input Data
     And Sales Klik Simpan Data
     Then Sales Validation Alamat Empty Appear
 
+  Scenario: Sales Input Empty Alasan Input
+    Given Sales Form Input
+    When Sales Input Nama
+    And Sales Input Nomor BPJS
+    And Sales Input Nomor KTP
+    And Sales Input Alamat
+    And Sales Select Kota KTP
+    And Sales Input Faskes Awal
+    And Sales Select Faskes Tujuan Different
+    And Sales Input Empty Alasan
+    And Sales Klik Simpan Data
+    Then Sales Validation Alasan Empty Appear
+
 
   Scenario: Sales Input Valid Input
     Given Sales Form Input
@@ -80,6 +93,7 @@ Feature: Sales Input Data
     And Sales Input Alamat
     And Sales Select Kota KTP
     And Sales Input Faskes Awal
-    And Sales Select Faskes Tujuan
+    And Sales Select Faskes Tujuan Different
+    And Sales Input Alasan
     And Sales Klik Simpan Data
     Then Sales Data Berhasil Disimpan
