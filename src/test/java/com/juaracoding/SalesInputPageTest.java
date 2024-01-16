@@ -46,33 +46,78 @@ public class SalesInputPageTest {
         salesInputPage.setNoBPJSInput("1234231432111");
     }
 
+    @And("Sales Input Empty Nomor BPJS")
+    public void sales_input_empty_nomor_bpjs(){
+        salesInputPage.setNoBPJSInput("");
+    }
+
+    @And("Sales Input Nomor BPJS less than 13")
+    public void sales_input_nomor_bpjs_less_than_13(){
+        salesInputPage.setNoBPJSInput("12312312312");
+    }
+
+
     @And("Sales Input Nomor KTP")
     public void sales_input_nomor_ktp(){
         salesInputPage.setNoKTPInput("1231232531235531");
     }
 
+    @And("Sales Input Empty Nomor KTP")
+    public void sales_input_empty_nomor_ktp(){
+        salesInputPage.setNoKTPInput("");
+    }
+
+    @And("Sales Input Nomor KTP less than 16")
+    public void sales_input_nomor_ktp_less_than_16(){
+        salesInputPage.setNoKTPInput("12312312312");
+    }
+
     @And("Sales Input Alamat")
     public void sales_input_alamat(){
-        salesInputPage.setAlamatInput("aasodnaoindoiawd");
+        salesInputPage.setAlamatInput("Jakarta");
+    }
+
+    @And("Sales Input Empty Alamat")
+    public void sales_input_empty_alamat(){
+        salesInputPage.setAlamatInput("");
     }
 
     @And("Sales Select Kota KTP")
     public void sales_select_kota_ktp(){
         salesInputPage.clickKotaKTP();
         salesInputPage.setSearchBoxKotaInput("Pusat");
-        salesInputPage.clickKotaKTPList();
+        salesInputPage.clickKotaKTPList(0);
     }
 
     @And("Sales Input Faskes Awal")
     public void sales_input_faskes_awal(){
-        salesInputPage.setFaskesAwalInput("Jakarta Selatan");
+        salesInputPage.setFaskesAwalInput("Jakarta Pusat");
     }
 
     @And("Sales Select Faskes Tujuan")
     public void sales_select_faskes_tujuan(){
         salesInputPage.clickFaskesTujuan();
         salesInputPage.setSearchBoxFaskesInput("Pusat");
-        salesInputPage.clickFaskesTujuanList();
+        salesInputPage.clickFaskesTujuanList(0);
+    }
+
+    @And("Sales Select Faskes Tujuan Different")
+    public void sales_select_faskes_tujuan_different(){
+        salesInputPage.clickFaskesTujuan();
+        salesInputPage.setSearchBoxFaskesInput("Selatan");
+        salesInputPage.clickFaskesTujuanList(0);
+    }
+
+    @And("Sales Input Alasan")
+    public void sales_input_alasan(){
+        salesInputPage.delay(2);
+        salesInputPage.setAlasanInput("Pindah Domisili");
+    }
+
+    @And("Sales Input Empty Alasan")
+    public void sales_input_empty_alasan(){
+        salesInputPage.delay(2);
+        salesInputPage.setAlasanInput("");
     }
 
     @And("Sales Klik Simpan Data")
@@ -90,7 +135,34 @@ public class SalesInputPageTest {
         Assert.assertEquals(salesInputPage.getValidationNameMsg(), "Please fill out this field.");
     }
 
+    @Then("Sales Validation BPJS Empty Appear")
+    public void sales_validation_bpjs_empty_appear(){
+        Assert.assertEquals(salesInputPage.getValidationBPJSMsg(), "Please fill out this field.");
+    }
 
+    @Then("Sales Validation Nomor BPJS 13 character expected Appear")
+    public void sales_validation_nomor_bpjs_13_character_expected_appear(){
+        Assert.assertEquals(salesInputPage.getValidationBPJSMsg(), "Please match the requested format.");
+    }
 
+    @Then("Sales Validation No KTP Empty Appear")
+    public void sales_validation_no_ktp_empty_appear(){
+        Assert.assertEquals(salesInputPage.getValidationKTPMsg(), "Please fill out this field.");
+    }
 
+    @Then("Sales Validation No KTP 16 character expected Appear")
+    public void sales_validation_no_ktp_16_character_expected_appear(){
+        Assert.assertEquals(salesInputPage.getValidationKTPMsg(), "Please match the requested format.");
+    }
+
+    @Then("Sales Validation Alamat Empty Appear")
+    public void sales_validation_alamat_empty_appear(){
+        Assert.assertEquals(salesInputPage.getAlamatErrorMsg(), "Field Alamat Harus Diisi!");
+    }
+
+    @Then("Sales Validation Alasan Empty Appear")
+    public void sales_validation_alasan_empty_appear(){
+        salesInputPage.delay(1);
+        Assert.assertEquals(salesInputPage.getAlasanErrorMsg(), "Field Alasan Harus Diisi!");
+    }
 }

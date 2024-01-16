@@ -25,6 +25,9 @@ public class SalesInputPage {
     @FindBy(xpath = "//textarea[@id='address']")
     WebElement alamatInput;
 
+    @FindBy(xpath = "//form/div[4]//span")
+    WebElement alamatErrorMsg;
+
     @FindBy(xpath = "//span[@id='select2-ktp_city-container']")
     WebElement selectKotaKTPInput;
 
@@ -42,6 +45,12 @@ public class SalesInputPage {
 
     @FindBy(xpath = "//ul[@id='select2-destination_faskes-results']/li")
     List<WebElement> listFaskesTujuanInput;
+
+    @FindBy(xpath = "//textarea[@id='reason']")
+    WebElement alasanInput;
+
+    @FindBy(xpath = "//form/div[@id='row-reason']//span")
+    WebElement alasanMsgInput;
 
     @FindBy(xpath = "//button[@type='submit']")
     WebElement simpanDataBtnInput;
@@ -123,6 +132,19 @@ public class SalesInputPage {
         String message = (String) js.executeScript("return arguments[0].validationMessage;", this.namaInput);
         return message;
     }
+
+    public String getValidationBPJSMsg(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return arguments[0].validationMessage;", this.noBPJSInput);
+        return message;
+    }
+
+    public String getValidationKTPMsg(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return arguments[0].validationMessage;", this.noKTPInput);
+        return message;
+    }
+
     public void setNoBPJSInput(String noBPJSInput) {
         this.noBPJSInput.sendKeys(noBPJSInput);
     }
@@ -143,8 +165,8 @@ public class SalesInputPage {
         this.searchBoxKotaInput.sendKeys(kota);
     }
 
-    public void clickKotaKTPList(){
-        this.listKotaKTPInput.get(0).click();
+    public void clickKotaKTPList(int index){
+        this.listKotaKTPInput.get(index).click();
     }
 
     public void setFaskesAwalInput(String faskes){
@@ -159,8 +181,12 @@ public class SalesInputPage {
         this.searchBoxKotaInput.sendKeys(faskes);
     }
 
-    public void clickFaskesTujuanList(){
-        this.listFaskesTujuanInput.get(0).click();
+    public void clickFaskesTujuanList(int index){
+        this.listFaskesTujuanInput.get(index).click();
+    }
+
+    public void setAlasanInput(String alasan){
+        this.alasanInput.sendKeys(alasan);
     }
 
     public void clickSimpanData(){
@@ -170,5 +196,13 @@ public class SalesInputPage {
     public String getDataBerhasilDisimpan(){
         String textMsg = dataBerhasilDisimpanMsg.getText();
         return textMsg.substring(0, textMsg.length() - 2);
+    }
+
+    public String getAlamatErrorMsg(){
+        return this.alamatErrorMsg.getText();
+    }
+
+    public String getAlasanErrorMsg(){
+        return this.alasanMsgInput.getText();
     }
 }
