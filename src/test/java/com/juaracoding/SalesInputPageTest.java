@@ -8,21 +8,29 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_scouse.An;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import java.util.concurrent.TimeUnit;
-
+import java.util.Random;
 public class SalesInputPageTest {
 
     private static WebDriver driver;
     private static SalesInputPage salesInputPage = new SalesInputPage();
     private static SalesHomePage salesHomePage = new SalesHomePage();
     private static ExtentTest extentTest;
+
+    private String noBPJS;
+    private String noKTP;
     public SalesInputPageTest(){
         driver = Hooks.driver;
         //extentTest = Hooks.extentTest;
+        Random rand = new Random();
+        Long bpjs = rand.nextLong(999999999);
+        Long ktp = rand.nextLong(999999999);
+
+        this.noBPJS= String.format("%13s", bpjs.toString()).replace(' ', '0');
+        this.noKTP= String.format("%16s", ktp.toString()).replace(' ', '0');
+
     }
 
     @Given("Sales Form Input")
@@ -43,7 +51,7 @@ public class SalesInputPageTest {
 
     @And("Sales Input Nomor BPJS")
     public void sales_input_nomor_bpjs(){
-        salesInputPage.setNoBPJSInput("1234231432111");
+        salesInputPage.setNoBPJSInput(this.noBPJS);
     }
 
     @And("Sales Input Empty Nomor BPJS")
@@ -59,7 +67,7 @@ public class SalesInputPageTest {
 
     @And("Sales Input Nomor KTP")
     public void sales_input_nomor_ktp(){
-        salesInputPage.setNoKTPInput("1231232531235531");
+        salesInputPage.setNoKTPInput(this.noKTP);
     }
 
     @And("Sales Input Empty Nomor KTP")
@@ -165,4 +173,101 @@ public class SalesInputPageTest {
         salesInputPage.delay(1);
         Assert.assertEquals(salesInputPage.getAlasanErrorMsg(), "Field Alasan Harus Diisi!");
     }
+
+    // Sales Upload Document
+
+    @Given("Sales click upload foto faskes awal")
+    public void sales_click_upload_foto_faskes_awal(){
+        salesInputPage.clickFaskesAwalUpload();
+    }
+
+    @Given("Sales click upload foto faskes tujuan")
+    public void sales_click_upload_foto_faskes_tujuan(){
+        salesInputPage.clickFaskesTujuanUpload();
+    }
+
+    @Given("Sales click upload foto tanda tangan digital")
+    public void sales_click_upload_foto_tanda_tangan_digital(){
+        salesInputPage.clickTandaTanganDigitalUpload();
+    }
+
+    @When("Sales insert valid foto faskes awal")
+    public void sales_insert_valid_foto_faskes_awal(){
+        salesInputPage.insertFotoFaskesAwal("1.png");
+    }
+
+    @When("Sales insert valid foto faskes tujuan")
+    public void sales_insert_valid_foto_faskes_tujuan(){
+        salesInputPage.insertFotoFaskesAwal("2.png");
+    }
+
+    @When("Sales insert valid foto tanda tangan digital")
+    public void sales_insert_valid_foto_tanda_tangan_digital(){
+        salesInputPage.insertFotoFaskesAwal("3.png");
+    }
+
+    @And("Sales insert invalid type foto")
+    public void sales_insert_invalid_type_foto(){
+        salesInputPage.insertTxtFoto("negativeFile.txt");
+    }
+
+    @And("Sales insert invalid size foto")
+    public void sales_insert_invalid_size_foto(){
+        salesInputPage.insertTxtFoto("6mb.jpg");
+    }
+
+    @And("Sales Klik Simpan File")
+    public void sales_klik_simpan_file(){
+        salesInputPage.delay(1);
+        salesInputPage.clickSimpanFile();
+    }
+
+    @And("Sales Klik Simpan size 6mb File")
+    public void sales_klik_simpan_size_6mb_file(){
+        salesInputPage.delay(1);
+        salesInputPage.clickSimpanFile();
+        salesInputPage.delay(20);
+    }
+
+    @Then("Sales gambar faskes awal berhasil diupload")
+    public void sales_gambar_faskes_awal_berhasil_diupload(){
+        salesInputPage.delay(1);
+        Assert.assertEquals(salesInputPage.getSuccessUpload(), "Data Berhasil diupload!");
+        salesInputPage.clickOkModal();
+        Assert.assertFalse(salesInputPage.getThumbnailFaskesAwal().contains("noimage.png"));
+    }
+
+    @Then("Sales gambar faskes tujuan berhasil diupload")
+    public void sales_gambar_faskes_tujuan_berhasil_diupload(){
+        salesInputPage.delay(1);
+        Assert.assertEquals(salesInputPage.getSuccessUpload(), "Data Berhasil diupload!");
+        salesInputPage.clickOkModal();
+        Assert.assertFalse(salesInputPage.getThumbnailFaskesTujuan().contains("noimage.png"));
+    }
+
+    @Then("Sales gambar tanda tangan berhasil diupload dan dokumen lengkap")
+    public void sales_gambar_tanda_tangan_berhasil_diupload_dan_dokumen_lengkap(){
+        salesInputPage.delay(1);
+        Assert.assertEquals(salesInputPage.getSuccessUpload(), "Data Berhasil diupload!");
+        salesInputPage.clickOkModal();
+        Assert.assertFalse(salesInputPage.getThumbnailTandaTangan().contains("noimage.png"));
+        Assert.assertEquals(salesInputPage.getDokumenLengkapMsgUpload(), "Terima kasih dokumen anda sudah lengkap !");
+    }
+
+    @Then("Sales message file type error")
+    public void sales_message_file_type_error(){
+        salesInputPage.delay(1);
+        Assert.assertEquals(salesInputPage.getErrorMsgUpload(), "Upload error: The filetype you are attempting to upload is not allowed.");
+        salesInputPage.clickCancelBtn();
+        salesInputPage.delay(1);
+    }
+
+    @Then("Sales message file size error")
+    public void sales_message_file_size_error(){
+        salesInputPage.delay(2);
+        Assert.assertEquals(salesInputPage.getErrorMsgUpload(), "Upload error: The file you are attempting to upload is larger than the permitted size.");
+        salesInputPage.clickCancelBtn();
+        salesInputPage.delay(1);
+    }
+
 }

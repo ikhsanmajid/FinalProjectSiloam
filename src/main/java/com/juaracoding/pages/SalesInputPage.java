@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import javax.swing.*;
 import java.util.List;
+import java.io.File;
 
 public class SalesInputPage {
 
@@ -73,14 +74,20 @@ public class SalesInputPage {
     @FindBy(xpath = "//button[@id='btnSave']")
     WebElement saveUploadFotoBtnUpload;
 
+    @FindBy(xpath = "//button[normalize-space()='Cancel']")
+    WebElement cancelUploadBtn;
+
     @FindBy(xpath = "//*[@id='message']")
     WebElement uploadErrorMsgUpload;
 
     @FindBy(xpath = "//div[@class='swal-text']")
     WebElement successMsgUpload;
 
-    @FindBy(xpath = "//tbody[1]/tr[1]/td[1]/div[1]/img")
+    @FindBy(xpath = "//tbody/tr/td[1]/div[1]/img")
     List<WebElement> imageThumbnailUpload;
+
+    @FindBy(xpath = "//button[@class='swal-button swal-button--confirm']")
+    WebElement confirmationModalBtnUpload;
 
     @FindBy(xpath = "//tbody[4]/tr/td/code")
     WebElement errorNextStepMsgUpload;
@@ -205,4 +212,71 @@ public class SalesInputPage {
     public String getAlasanErrorMsg(){
         return this.alasanMsgInput.getText();
     }
+
+    // click
+
+    public void clickFaskesAwalUpload(){
+        actions.click(fotoFaskesAwalBtnUpload).perform();
+    }
+
+    public void clickFaskesTujuanUpload(){
+        actions.click(fotoFaskesTujuanBtnUpload).perform();
+    }
+
+    public void clickTandaTanganDigitalUpload(){
+        actions.click(tandaTanganDigitalBtnUpload).perform();
+    }
+
+    public void insertFotoFaskesAwal(String filename){
+        String relativePath = "src/test/resources/files/"+filename;
+        File uploadFile = new File(relativePath);
+        this.inputFileUpload.sendKeys(uploadFile.getAbsolutePath());
+    }
+
+    public void insertTxtFoto(String filename){
+        String relativePath = "src/test/resources/files/"+filename;
+        File uploadFile = new File(relativePath);
+        this.inputFileUpload.sendKeys(uploadFile.getAbsolutePath());
+    }
+
+    public String getErrorMsgUpload(){
+        return this.uploadErrorMsgUpload.getText();
+    }
+
+    public void clickSimpanFile(){
+        actions.click(this.saveUploadFotoBtnUpload).perform();
+    }
+
+    public void clickCancelBtn(){
+        actions.click(this.cancelUploadBtn).perform();
+    }
+
+    public String getThumbnailFaskesAwal(){
+        String thumb = this.imageThumbnailUpload.get(0).getAttribute("src");
+        return thumb;
+    }
+
+    public String getThumbnailFaskesTujuan(){
+        String thumb = this.imageThumbnailUpload.get(1).getAttribute("src");
+        System.out.println(imageThumbnailUpload);
+        return thumb;
+    }
+
+    public String getThumbnailTandaTangan(){
+        String thumb = this.imageThumbnailUpload.get(2).getAttribute("src");
+        return thumb;
+    }
+
+    public String getSuccessUpload(){
+        return this.successMsgUpload.getText();
+    }
+
+    public String getDokumenLengkapMsgUpload(){
+        return this.successNextStepMsgUpload.getText();
+    }
+
+    public void clickOkModal(){
+        actions.click(this.confirmationModalBtnUpload).perform();
+    }
+
 }
