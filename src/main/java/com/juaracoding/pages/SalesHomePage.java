@@ -27,7 +27,6 @@ public class SalesHomePage {
 
 
     public String getHomeText() {
-        System.out.println(homeText.getText());
         return homeText.getText();
     }
 

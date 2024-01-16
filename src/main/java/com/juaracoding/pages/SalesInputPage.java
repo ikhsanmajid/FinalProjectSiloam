@@ -1,11 +1,14 @@
 package com.juaracoding.pages;
 
 import com.juaracoding.drivers.DriverSingleton;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.swing.*;
 import java.util.List;
 
 public class SalesInputPage {
@@ -39,6 +42,12 @@ public class SalesInputPage {
 
     @FindBy(xpath = "//ul[@id='select2-destination_faskes-results']/li")
     List<WebElement> listFaskesTujuanInput;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    WebElement simpanDataBtnInput;
+
+    @FindBy(xpath = "//div[@role='alert']")
+    WebElement dataBerhasilDisimpanMsg;
 
     @FindBy(xpath = "//span[normalize-space()='Foto Faskes Awal']")
     WebElement fotoFaskesAwalBtnUpload;
@@ -86,12 +95,80 @@ public class SalesInputPage {
     WebElement submitBtnTtd;
 
 
+
+
     private WebDriver driver;
+    private final Actions actions;
 
     public SalesInputPage(){
         this.driver = DriverSingleton.getDriver();
+        this.actions = new Actions(this.driver);
         PageFactory.initElements(driver, this);
     }
 
+    public void delay(int d){
+        try{
+            Thread.sleep(d * 1000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
+    }
 
+    public void setNamaInput(String namaInput) {
+        this.namaInput.sendKeys(namaInput);
+    }
+
+    public String getValidationNameMsg(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return arguments[0].validationMessage;", this.namaInput);
+        return message;
+    }
+    public void setNoBPJSInput(String noBPJSInput) {
+        this.noBPJSInput.sendKeys(noBPJSInput);
+    }
+
+    public void setNoKTPInput(String noKTPInput) {
+        this.noKTPInput.sendKeys(noKTPInput);
+    }
+
+    public void setAlamatInput(String alamatInput){
+        this.alamatInput.sendKeys(alamatInput);
+    }
+
+    public void clickKotaKTP() {
+        actions.click(selectKotaKTPInput).perform();
+    }
+
+    public void setSearchBoxKotaInput(String kota){
+        this.searchBoxKotaInput.sendKeys(kota);
+    }
+
+    public void clickKotaKTPList(){
+        this.listKotaKTPInput.get(0).click();
+    }
+
+    public void setFaskesAwalInput(String faskes){
+        this.faskesAwalInput.sendKeys(faskes);
+    }
+
+    public void clickFaskesTujuan(){
+        actions.click(selectFaskesTujuanInput).perform();
+    }
+
+    public void setSearchBoxFaskesInput(String faskes){
+        this.searchBoxKotaInput.sendKeys(faskes);
+    }
+
+    public void clickFaskesTujuanList(){
+        this.listFaskesTujuanInput.get(0).click();
+    }
+
+    public void clickSimpanData(){
+        actions.click(simpanDataBtnInput).perform();
+    }
+
+    public String getDataBerhasilDisimpan(){
+        String textMsg = dataBerhasilDisimpanMsg.getText();
+        return textMsg.substring(0, textMsg.length() - 2);
+    }
 }
