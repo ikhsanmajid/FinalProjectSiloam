@@ -28,44 +28,45 @@ Feature: New Page
   Scenario: Search Data with input alphabet
     Given User input alphabet
     When User click search button
-    Then View Data
+    Then View data
 
   # 5
   Scenario: Search Data with input numeric
     Given User input numeric
     When User click search button
-    Then View Data
+    Then View data
 
   # 6
   Scenario: Search Data with input symbol
     Given User input symbol
     When User click search button
-    Then View Data
+    Then View data
 
   # 7
   Scenario: Search Data without input keyword
     Given User input empty keyword
     When User click search button
-    Then View Data
+    Then View data
 
   # 8
   Scenario: Search Data with input keyword
-    Given User input keyword
+    Given User input search keyword
     When User click search button
     And User click refresh button
-    Then View Data
+    Then View data
 
   # 9
   Scenario: Check action signature
     Given User view data
     When User click action signature
-    Then View Data
+    Then View data
 
   # 10
   Scenario: Check action view
-    Given User click action view
-    When User click submit button
-    Then View Data
+    Given User view data
+    When User click action view
+    And User click submit button
+    Then View data
 
   # 11
   Scenario: Update data
@@ -74,7 +75,7 @@ Feature: New Page
     And User click edit button
     And User update data
     And User click save button
-    Then View Data
+    Then View data
 
   # 12
   Scenario: Update data without data
@@ -83,7 +84,7 @@ Feature: New Page
     And User click edit button
     And User input empty keyword
     And User click save button
-    Then View Data
+    Then View data
 
   # 13
   Scenario: Cancel data existing
@@ -91,20 +92,20 @@ Feature: New Page
     When User click action view
     And User click edit button
     And User click cancel button
-    Then View Data
+    Then View data
 
   # 14
-  Scenario: Delete documment existing
+  Scenario: Delete document existing
     Given User update existing data
     When User click action view
-    And User click delete documment
+    And User click delete document
     And User click submit button
-    Then View Data
+    Then View data
 
   # 15
-  Scenario: Reupload documment existing
+  Scenario: Reupload document existing
     Given User update existing data
     When User click action view
     And User click Add files button
     And User click submit button
-    Then View Data
+    Then View data
