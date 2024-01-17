@@ -1,5 +1,6 @@
 package com.juaracoding.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,6 +26,44 @@ public class AdminViewExportPage {
     @FindBy(xpath = "//*[@id=\"data-table-default2\"]/tbody/tr[1]/td[8]/a")
     List<WebElement> prevFaskesTujuan;
     @FindBy(xpath = "//*[@id=\"data-table-default2\"]/tbody/tr[1]/td[8]/a")
-    List<WebElement> prevdfAgreement;
+    List<WebElement> prevPdf;
 
+    private WebDriver driver;
+    public void clickHomeNavMenu(){
+        this.homeNavMenu.click();
+    }
+
+    public void clickStartDate(){
+        this.startDate.click();
+    }
+    public void setStartDate(String startDateIn){
+        this.startDate.sendKeys(startDateIn);
+    }
+    public void clickEndDate(){
+        this.endDate.click();
+    }
+    public void setEndDate(String endDateIn){
+        this.endDate.sendKeys(endDateIn);
+    }
+    public void clickFilterBtn(){
+        this.filterBtn.click();
+    }
+    public void clickRefreshBtn(){
+        this.refreshBtn.click();
+    }
+    public void clickExportBtn(){
+        this.exportBtn.click();
+    }
+    public void clickViewBtn(int n){
+        this.viewBtn.get(n).click();
+    }
+    public void clickPrevFaskesAwal(int n){
+        this.prevFaskesAwal.get(n).click();
+    }
+    public void clickPrevFaskeTujuanl(int n){
+        this.prevFaskesTujuan.get(n).click();
+    }
+    public void clickPrevPdf(int n){
+        this.prevPdf.get(n).click();
+    }
 }
