@@ -10,6 +10,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -300,6 +301,9 @@ public class SalesInputPageTest {
         salesInputPage.clickOkModal();
         Assert.assertFalse(salesInputPage.getThumbnailTandaTangan().contains("noimage.png"));
         Assert.assertEquals(salesInputPage.getDokumenLengkapMsgUpload(), "Terima kasih dokumen anda sudah lengkap !");
+        salesInputPage.clickSelanjutnyaBtnUpload();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
         extentTest.log(LogStatus.PASS, "Sales gambar tanda tangan berhasil diupload dan dokumen lengkap");
     }
 
@@ -328,6 +332,35 @@ public class SalesInputPageTest {
         salesInputPage.clickCancelBtn();
         salesInputPage.delay(1);
         extentTest.log(LogStatus.PASS, "Sales message file size error");
+    }
+
+
+    // Module Tanda Tangan
+
+    @When("Sales Klik Edit Button")
+    public void sales_klik_edit_button(){
+        salesInputPage.clickEditBtnTtd();
+        extentTest.log(LogStatus.PASS, "Sales Klik Edit Button");
+    }
+
+    @Then("Sales Edit Form Enabled")
+    public void sales_edit_form_enabled(){
+        salesInputPage.delay(2);
+        Assert.assertTrue(salesInputPage.checkNameEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkNoBPJSEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkNoKTPEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkAlamatEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkKotaKTPEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkFaskesAwalEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkFaskesTujuanEnabledTtd());
+        Assert.assertTrue(salesInputPage.checkAlasanEnabledTtd());
+        salesInputPage.clickCancelDataEditBtn();
+        extentTest.log(LogStatus.PASS, "Sales Edit Form Enabled");
+    }
+
+    @And("Sales Klik Simpan Data Ttd")
+    public void sales_klik_simpan_data_ttd(){
+        salesInputPage.clickSimpanDataEditBtn();
     }
 
     @AfterAll

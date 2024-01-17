@@ -28,7 +28,18 @@ public enum TestCase {
     U9("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     U10("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     U11("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
-    U12("Sales Upload Valid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan");
+    U12("Sales Upload Valid Tanda Tangan Digital", "Upload Document Sales", "Astrin"),
+    T1("Sales Click Edit Btn", "Tanda Tangan Sales", "Astrin"),
+    T2("Sales Input Empty Name Input", "Tanda Tangan Sales", "Ikhsan"),
+    T3("Sales Input Empty BPJS Input", "Tanda Tangan Sales", "Ikhsan"),
+    T4("Sales Input BPJS less than 13 Input", "Tanda Tangan Sales", "Ikhsan"),
+    T5("Sales Input Empty No KTP Input", "Tanda Tangan Sales", "Ikhsan"),
+    T6("Sales Input No KTP less than 16 Input", "Tanda Tangan Sales", "Ikhsan"),
+    T7("Sales Input Empty Alamat Input", "Tanda Tangan Sales", "Ikhsan"),
+    T8("Sales Kota KTP different with Faskes Tujuan", "Tanda Tangan Sales", "Ikhsan"),
+
+    T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan");
+//    T10("Sales Input Valid Input", "Input Data Sales", "Ikhsan"),
 
     private String testCaseName, module, author;
 

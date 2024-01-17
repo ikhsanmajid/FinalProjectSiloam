@@ -2,6 +2,7 @@ package com.juaracoding.pages;
 
 import com.juaracoding.drivers.DriverSingleton;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -98,8 +99,40 @@ public class SalesInputPage {
     @FindBy(xpath = "//a[@class='btn btn-primary']")
     WebElement nextBtnUpload;
 
+    // Tanda Tangan
+
+    @FindBy(xpath = "//input[@id='name']")
+    WebElement namaInputTtd;
+
+    @FindBy(xpath = "//input[@id='no_bpjs']")
+    WebElement noBPJSInputTtd;
+
+    @FindBy(xpath = "//input[@id='no_ktp']")
+    WebElement noKTPInputTtd;
+
+    @FindBy(xpath = "//textarea[@id='address']")
+    WebElement alamatInputTtd;
+
+    @FindBy(xpath = "//span[@id='select2-ktp_city-container']")
+    WebElement selectKotaKTPInputTtd;
+
+    @FindBy(xpath = "//input[@id='origin_faskes']")
+    WebElement selectFaskesAwalInputTtd;
+
+    @FindBy(xpath = "//span[@id='select2-destination_faskes-container']")
+    WebElement selectFaskesTujuanInputTtd;
+
+    @FindBy(xpath = "//textarea[@id='reason']")
+    WebElement alasanInputTtd;
+
     @FindBy(xpath = "//button[@id='btnEdit']")
     WebElement editBtnTtd;
+
+    @FindBy(xpath = "//button[@id='btnCancelUpdate']")
+    WebElement cancelBtnTtd;
+
+    @FindBy(xpath = "//button[@id='btnUpdate']")
+    WebElement simpanDataEditBtnTtd;
 
     @FindBy(xpath = "//tbody/tr[1]/td[3]/div[1]/a[2]/i")
     List<WebElement> deleteImageBtnTtd;
@@ -131,6 +164,7 @@ public class SalesInputPage {
     }
 
     public void setNamaInput(String namaInput) {
+        this.namaInput.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         this.namaInput.sendKeys(namaInput);
     }
 
@@ -153,14 +187,17 @@ public class SalesInputPage {
     }
 
     public void setNoBPJSInput(String noBPJSInput) {
+        this.noBPJSInputTtd.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         this.noBPJSInput.sendKeys(noBPJSInput);
     }
 
     public void setNoKTPInput(String noKTPInput) {
+        this.noKTPInputTtd.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         this.noKTPInput.sendKeys(noKTPInput);
     }
 
     public void setAlamatInput(String alamatInput){
+        this.alamatInput.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         this.alamatInput.sendKeys(alamatInput);
     }
 
@@ -177,6 +214,7 @@ public class SalesInputPage {
     }
 
     public void setFaskesAwalInput(String faskes){
+        this.faskesAwalInput.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         this.faskesAwalInput.sendKeys(faskes);
     }
 
@@ -197,6 +235,7 @@ public class SalesInputPage {
     }
 
     public void setAlasanInput(String alasan){
+        this.alasanInput.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         this.alasanInput.sendKeys(alasan);
     }
 
@@ -262,7 +301,6 @@ public class SalesInputPage {
 
     public String getThumbnailFaskesTujuan(){
         String thumb = this.imageThumbnailUpload.get(1).getAttribute("src");
-        System.out.println(imageThumbnailUpload);
         return thumb;
     }
 
@@ -281,6 +319,96 @@ public class SalesInputPage {
 
     public void clickOkModal(){
         actions.click(this.confirmationModalBtnUpload).perform();
+    }
+
+    public void clickSelanjutnyaBtnUpload(){
+        actions.click(this.nextBtnUpload).perform();
+    }
+
+    // Modul Tanda Tangan
+
+    public void clickEditBtnTtd(){
+        actions.click(this.editBtnTtd).perform();
+    }
+
+    public Boolean checkNameEnabledTtd(){
+        String element = this.namaInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkNoBPJSEnabledTtd(){
+        String element = this.noBPJSInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkNoKTPEnabledTtd(){
+        String element = this.noKTPInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkAlamatEnabledTtd(){
+        String element = this.alamatInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkKotaKTPEnabledTtd(){
+        String element = this.selectKotaKTPInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkFaskesAwalEnabledTtd(){
+        String element = this.selectFaskesAwalInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkFaskesTujuanEnabledTtd(){
+        String element = this.selectFaskesTujuanInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public Boolean checkAlasanEnabledTtd(){
+        String element = this.alasanInputTtd.getAttribute("disabled");
+        if (element == null){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void clickSimpanDataEditBtn(){
+       actions.click(this.simpanDataEditBtnTtd).perform();
+    }
+
+    public void clickCancelDataEditBtn(){
+        actions.click(this.cancelBtnTtd).perform();
     }
 
 }
