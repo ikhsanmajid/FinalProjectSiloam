@@ -1,6 +1,11 @@
 Feature: Sales Upload Document
   Scenario: Sales Upload Invalid Faskes Awal
     Given Sales click upload foto faskes awal
+    And Sales Klik Simpan File
+    Then Sales message file empty error
+
+  Scenario: Sales Upload Invalid Faskes Awal
+    Given Sales click upload foto faskes awal
     And Sales insert invalid type foto
     And Sales Klik Simpan File
     Then Sales message file type error
@@ -19,6 +24,11 @@ Feature: Sales Upload Document
 
   Scenario: Sales Upload Invalid Faskes Tujuan
     Given Sales click upload foto faskes tujuan
+    And Sales Klik Simpan File
+    Then Sales message file empty error
+
+  Scenario: Sales Upload Invalid Faskes Tujuan
+    Given Sales click upload foto faskes tujuan
     And Sales insert invalid type foto
     And Sales Klik Simpan File
     Then Sales message file type error
@@ -34,6 +44,11 @@ Feature: Sales Upload Document
     And Sales insert valid foto faskes tujuan
     And Sales Klik Simpan File
     Then Sales gambar faskes tujuan berhasil diupload
+
+  Scenario: Sales Upload Invalid Tanda Tangan Digital
+    Given Sales click upload foto tanda tangan digital
+    And Sales Klik Simpan File
+    Then Sales message file empty error
 
   Scenario: Sales Upload Invalid Tanda Tangan Digital
     Given Sales click upload foto tanda tangan digital

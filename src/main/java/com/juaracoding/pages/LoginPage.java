@@ -1,6 +1,7 @@
 package com.juaracoding.pages;
 
 import com.juaracoding.drivers.DriverSingleton;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,9 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[@type='submit']")
     WebElement loginBtn;
+
+    @FindBy(xpath = "/html/body/div[4]/div/div[1]/div[1]/b")
+    WebElement loginPageTitle;
 
     private WebDriver driver;
 
@@ -33,5 +37,31 @@ public class LoginPage {
 
     public void clickLoginBtn(){
         this.loginBtn.click();
+    }
+
+    public String checkRequiredUsername(){
+        JavascriptExecutor js = (JavascriptExecutor) this.driver;
+        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", this.usernameInput);
+        if(isRequired )
+        {
+            return "passed";
+        }else{
+            return "failed";
+        }
+    }
+
+    public String checkRequiredPassword(){
+        JavascriptExecutor js = (JavascriptExecutor) this.driver;
+        boolean isRequired = (Boolean) js.executeScript("return arguments[0].required;", this.passwordInput);
+        if(isRequired )
+        {
+            return "passed";
+        }else{
+            return "failed";
+        }
+    }
+
+    public String checkRedirectToLogin(){
+        return this.loginPageTitle.getText().trim();
     }
 }
