@@ -140,6 +140,7 @@ public class SalesInputPageTest {
         extentTest.log(LogStatus.PASS, "Sales Input Alasan");
     }
 
+
     @And("Sales Input Empty Alasan")
     public void sales_input_empty_alasan(){
         salesInputPage.delay(2);
@@ -200,6 +201,13 @@ public class SalesInputPageTest {
         salesInputPage.delay(1);
         Assert.assertEquals(salesInputPage.getAlasanErrorMsg(), "Field Alasan Harus Diisi!");
         extentTest.log(LogStatus.PASS, "Sales Validation Alasan Empty Appear");
+    }
+
+    @Then("Sales Alasan Appear")
+    public void sales_alasan_appear(){
+        salesInputPage.delay(1);
+        Assert.assertEquals(salesInputPage.getAlasanDisplay(), "");
+        extentTest.log(LogStatus.PASS, "Sales Alasan Appear");
     }
 
     // Sales Upload Document

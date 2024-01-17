@@ -71,6 +71,12 @@ Feature: Sales Input Data
     And Sales Klik Simpan Data
     Then Sales Validation Alamat Empty Appear
 
+  Scenario: Sales Kota KTP different with Faskes Tujuan
+    Given Sales Form Input
+    When Sales Select Kota KTP
+    And Sales Select Faskes Tujuan Different
+    Then Sales Alasan Appear
+
   Scenario: Sales Input Empty Alasan Input
     Given Sales Form Input
     When Sales Input Nama
