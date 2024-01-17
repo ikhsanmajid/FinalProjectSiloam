@@ -22,7 +22,7 @@ public class Hooks {
         DriverSingleton.getInstance("chrome");
         driver = DriverSingleton.getDriver();
         TestCase[] test = TestCase.values();
-        extentTest = reports.startTest(test[Utils.testCount].getTestCaseName());
+        extentTest = reports.startTest(test[Utils.testCount].getTestCaseName()).assignCategory(test[Utils.testCount].getModuleName()).assignAuthor(test[Utils.testCount].getAuthorName());
         Utils.testCount++;
     }
 

@@ -192,6 +192,10 @@ public class SalesInputPage {
         this.listFaskesTujuanInput.get(index).click();
     }
 
+    public String getAlasanDisplay(){
+        return this.alasanInput.getAttribute("style");
+    }
+
     public void setAlasanInput(String alasan){
         this.alasanInput.sendKeys(alasan);
     }
