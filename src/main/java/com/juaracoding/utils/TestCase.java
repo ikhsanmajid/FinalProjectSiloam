@@ -38,8 +38,11 @@ public enum TestCase {
     T7("Sales Input Empty Alamat Input", "Tanda Tangan Sales", "Ikhsan"),
     T8("Sales Kota KTP different with Faskes Tujuan", "Tanda Tangan Sales", "Ikhsan"),
 
-    T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan");
-//    T10("Sales Input Valid Input", "Input Data Sales", "Ikhsan"),
+    T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan"),
+//
+    T10("Sales Simpan Data", "Tanda Tangan Sales", "Ikhsan");
+
+
 
     private String testCaseName, module, author;
 

@@ -1,10 +1,7 @@
 package com.juaracoding.pages;
 
 import com.juaracoding.drivers.DriverSingleton;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -140,8 +137,11 @@ public class SalesInputPage {
     @FindBy(xpath = "//tbody/tr[1]/td[4]/a")
     List<WebElement> addFilesBtnTtd;
 
-    @FindBy(xpath = "/html/body/div[5]/div[1]/div/div/div/div[2]/div/div/div[2]/a")
+    @FindBy(xpath = "//a[@class='btn btn-primary']")
     WebElement submitBtnTtd;
+
+    @FindBy(xpath = "//div[@role='alert']")
+    WebElement ttdSaveSuccessMsg;
 
 
 
@@ -271,7 +271,7 @@ public class SalesInputPage {
     }
 
     public void insertFotoFaskesAwal(String filename){
-        String relativePath = "src/test/resources/files/"+filename;
+        String relativePath = "src/test/resources/files/" + filename;
         File uploadFile = new File(relativePath);
         this.inputFileUpload.sendKeys(uploadFile.getAbsolutePath());
     }
@@ -409,6 +409,16 @@ public class SalesInputPage {
 
     public void clickCancelDataEditBtn(){
         actions.click(this.cancelBtnTtd).perform();
+    }
+
+    public void clickSubmitDataTtd(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        actions.click(this.submitBtnTtd).perform();
+    }
+
+    public String getSuccessSubmitMsg(){
+        return this.ttdSaveSuccessMsg.getText().substring(0, this.ttdSaveSuccessMsg.getText().length() - 2);
     }
 
 }

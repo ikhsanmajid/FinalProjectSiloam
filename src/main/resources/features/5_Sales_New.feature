@@ -109,3 +109,6 @@ Feature: New Page
     And User click Add files button
     And User click submit button
     Then View data
+
+    Scenario: Sales Logout Website
+      When Sales
