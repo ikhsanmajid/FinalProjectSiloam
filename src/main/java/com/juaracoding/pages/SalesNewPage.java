@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.File;
+
 public class SalesNewPage {
 
     private WebDriver driver;
@@ -40,15 +42,19 @@ public class SalesNewPage {
     @FindBy(xpath= "//span[@id='btnRefresh']")
     WebElement btnRefreshData;
 
+    @FindBy(xpath = "//a[normalize-space()='2']")
+    WebElement btnPaggination;
     @FindBy(xpath= "//tbody/tr[1]/td[7]/center[1]/a[1]/span[1]")
     WebElement btnViewData ;
-
 
     @FindBy(xpath= "//button[@id='btnEdit']")
     WebElement btnEditData;
 
     @FindBy(xpath= "//textarea[@id='address']")
     WebElement updateAlamat;
+
+    @FindBy(xpath = "//span[normalize-space()='Field Alamat Harus Diisi!']")
+    WebElement errorMessageAlamat;
 
     @FindBy(xpath= "//button[@id='btnUpdate']")
     WebElement btnSaveData;
@@ -59,33 +65,66 @@ public class SalesNewPage {
     @FindBy(xpath= "//tbody/tr[1]/td[3]/div[1]/a[2]/i[1]")
     WebElement btnIconDeleteUpload;
 
+    @FindBy(xpath = "//tbody/tr[1]/td[4]/a[1]/span[1]")
+    WebElement btnAddFilesBefore;
+
+    @FindBy(xpath = "//input[@id='file']")
+    WebElement btnChooseFile;
+
+    @FindBy(xpath = "//button[@id='btnSaveFoto']")
+    WebElement btnSaveFoto;
+
     @FindBy(xpath= "//a[@class='btn btn-primary']")
     WebElement btnSubmit;
 
+
+    public void delay(int d){
+        try{
+            Thread.sleep(d * 1000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+        }
+    }
 
     public void clickNavMenu(){
         this.newMenu.click();
     }
 
-    public void clickStartDate(){
+//    public void setStartDate(String startDate) {
+//        this.startDate.sendKeys(startDate);
+//    }
+//
+//    public void setEndDate(String endDate) {
+//        this.endDate.sendKeys(endDate);
+//    }
+
+//    public void clickStartDate(String startDateFilter){
+//        this.startDate.sendKeys(startDateFilter);
+//    }
+
+
+
+//    public void clickEndDate(String endDateFilter){
+//        this.endDate.sendKeys(endDateFilter);
+//    }
+
+    public void clickStartDate() {
         this.startDate.click();
     }
 
-    public void clickStartDate(String startDateFilter){
-        this.startDate.sendKeys(startDateFilter);
+    public void setStartDate(String startDateSet){
+        this.startDate.sendKeys(startDateSet);
     }
 
-    public void clickEndDate(){
+    public void clickEndDate() {
         this.endDate.click();
     }
 
-    public void clickEndDate(String endDateFilter){
-        this.endDate.sendKeys(endDateFilter);
+    public void setEndDate(String endDateSet){
+        this.endDate.sendKeys(endDateSet);
     }
-
     public void clickBtnFilterData() {
         this.btnFilterData.click();
-
     }
 
     public void clickBtnResetDate(){
@@ -97,8 +136,19 @@ public class SalesNewPage {
         this.searchKeywordInput.sendKeys(searchKeywordInput);
     }
 
+    public void clickBtnSearchIcon(){
+        this.btnSearchIcon.click();
+    }
+
+    public void clickbtnActionView(){
+        this.btnViewData.click();
+    }
     public void clickBtnRefreshData(){
         this.btnRefreshData.click();
+    }
+
+    public void clickBtnPaggination(){
+        this.btnPaggination.click();
     }
 
     public void clickBtnViewData(){
@@ -110,12 +160,30 @@ public class SalesNewPage {
     }
 
     public void setInputUpdateAlamat(String updateAlamat){
-    this.updateAlamat.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
-    this.updateAlamat.sendKeys(updateAlamat);
+        this.updateAlamat.sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
+        this.updateAlamat.sendKeys(updateAlamat);
     }
     public void clickBtnSaveData(){
         this.btnSaveData.click();
     }
+
+    public void clickbtnAddFilesBefore(){
+        this.btnAddFilesBefore.click();
+
+    }
+
+    public void insertFoto(String filename){
+        String relativePath = "src/test/resources/files/" + filename;
+        File uploadFile = new File(relativePath);
+        this.btnChooseFile.sendKeys(uploadFile.getAbsolutePath());
+    }
+
+    public void clickBtnSaveFoto(){
+        this.btnSaveFoto.click();
+
+    }
+
+
     public void clickbtnCancelEdit(){
         this.btnCancelEdit.click();
     }
@@ -125,5 +193,9 @@ public class SalesNewPage {
 
     public void clickBtnSubmit(){
         this.btnSubmit.click();
+    }
+
+    public String getErrorMsgAlamat(){
+        return this.errorMessageAlamat.getText();
     }
 }
