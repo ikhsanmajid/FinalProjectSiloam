@@ -92,14 +92,6 @@ Feature: Sales Tanda Tangan
     Then Sales Validation Alasan Empty Appear
 
 
-#  Scenario: Sales Input Valid Input
-#    When Sales Input Nama
-#    And Sales Input Nomor BPJS
-#    And Sales Input Nomor KTP
-#    And Sales Input Alamat
-#    And Sales Select Kota KTP
-#    And Sales Input Faskes Awal
-#    And Sales Select Faskes Tujuan Different
-#    And Sales Input Alasan
-#    And Sales Klik Simpan Data Ttd
-#    Then Sales Data Berhasil Disimpan
+  Scenario: Sales Simpan Data
+    When Sales Klik Simpan Tanda Tangan
+    Then Sales Data Ttd Berhasil Disimpan

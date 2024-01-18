@@ -363,6 +363,19 @@ public class SalesInputPageTest {
         salesInputPage.clickSimpanDataEditBtn();
     }
 
+    @When("Sales Klik Simpan Tanda Tangan")
+    public void sales_klik_simpan_tanda_tangan(){
+        salesInputPage.clickSubmitDataTtd();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
+    @Then("Sales Data Ttd Berhasil Disimpan")
+    public void sales_data_ttd_berhasil_disimpan(){
+        salesInputPage.delay(2);
+        Assert.assertEquals(salesInputPage.getSuccessSubmitMsg(), "TTD Digital Berhasil");
+    }
+
     @AfterAll
     public static void finish(){
         DriverSingleton.delay(3);

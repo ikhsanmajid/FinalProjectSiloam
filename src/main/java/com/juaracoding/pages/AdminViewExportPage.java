@@ -1,8 +1,12 @@
 package com.juaracoding.pages;
 
+import com.juaracoding.drivers.DriverSingleton;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -27,12 +31,24 @@ public class AdminViewExportPage {
     List<WebElement> prevFaskesTujuan;
     @FindBy(xpath = "//*[@id=\"data-table-default2\"]/tbody/tr[1]/td[8]/a")
     List<WebElement> prevPdf;
+    @FindBy(xpath = "//*[@id='data-table-default2']/tbody")
+    WebElement table;
 
     private WebDriver driver;
+    private final Actions actions;
+
+    public AdminViewExportPage(){
+        this.driver = DriverSingleton.getDriver();
+        this.actions = new Actions(this.driver);
+        PageFactory.initElements(driver, this);
+    }
+
     public void clickHomeNavMenu(){
         this.homeNavMenu.click();
     }
-
+    public void buka(){
+        System.out.println(table.getText());
+    }
     public void clickStartDate(){
         this.startDate.click();
     }
@@ -65,5 +81,15 @@ public class AdminViewExportPage {
     }
     public void clickPrevPdf(int n){
         this.prevPdf.get(n).click();
+    }
+    public String getStartDatedMsg(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return arguments[0].validationMessage;", this.startDate);
+        return message;
+    }
+    public String getEndDatedMsg(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return arguments[0].validationMessage;", this.endDate);
+        return message;
     }
 }

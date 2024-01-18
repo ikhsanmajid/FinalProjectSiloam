@@ -28,7 +28,7 @@ public enum TestCase {
     U9("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     U10("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     U11("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
-    U12("Sales Upload Valid Tanda Tangan Digital", "Upload Document Sales", "Astrin"),
+    U12("Sales Upload Valid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     T1("Sales Click Edit Btn", "Tanda Tangan Sales", "Astrin"),
     T2("Sales Input Empty Name Input", "Tanda Tangan Sales", "Ikhsan"),
     T3("Sales Input Empty BPJS Input", "Tanda Tangan Sales", "Ikhsan"),
@@ -37,10 +37,8 @@ public enum TestCase {
     T6("Sales Input No KTP less than 16 Input", "Tanda Tangan Sales", "Ikhsan"),
     T7("Sales Input Empty Alamat Input", "Tanda Tangan Sales", "Ikhsan"),
     T8("Sales Kota KTP different with Faskes Tujuan", "Tanda Tangan Sales", "Ikhsan"),
-
     T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan"),
-//    T10("Sales Input Valid Input", "Input Data Sales", "Ikhsan"),
-
+    T10("Sales Simpan Data", "Tanda Tangan Sales", "Ikhsan"),
     N1("Filter Data with Invalid date","New Sales Page","Astrin"),
     N2("Filter Data Valid","New Sales Page", "Astrin"),
     N3("Reset Filter Data","New Sales Page", "Astrin"),
