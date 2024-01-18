@@ -39,7 +39,6 @@ public class LoginSalesTest {
         loginPage.setUsernameInput(username);
         loginPage.setPasswordInput(password);
         extentTest.log(LogStatus.PASS, "Sales enter username and password");
-
     }
 
     @When("Sales enter {string} or {string}")

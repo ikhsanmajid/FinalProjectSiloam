@@ -29,14 +29,13 @@ public class AdminHomePage {
         this.homeText.click();
     }
 
-    public void clickviewAndExportNavMenu(){
+    public void clickViewAndExportNavMenu(){
         this.viewAndExportNavMenu.click();
     }
 
     public void clickSidebar(){
         this.sidebar.click();
     }
-
     public void clickUserAdmin(){
         this.userAdmin.click();
     }

@@ -63,4 +63,13 @@ public class LoginPage {
     public String checkRedirectToLogin(){
         return this.loginPageTitle.getText().trim();
     }
+    public String getValidationNameMsg(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String message = (String) js.executeScript("return arguments[0].validationMessage;", this.usernameInput);
+        return message;
+    }
+    public String getPasswordValue(){
+        String value = this.passwordInput.getAttribute("value");
+        return value;
+    }
 }
