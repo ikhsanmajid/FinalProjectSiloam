@@ -28,7 +28,7 @@ public enum TestCase {
     U9("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     U10("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     U11("Sales Upload Invalid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
-    U12("Sales Upload Valid Tanda Tangan Digital", "Upload Document Sales", "Astrin"),
+    U12("Sales Upload Valid Tanda Tangan Digital", "Upload Document Sales", "Ikhsan"),
     T1("Sales Click Edit Btn", "Tanda Tangan Sales", "Astrin"),
     T2("Sales Input Empty Name Input", "Tanda Tangan Sales", "Ikhsan"),
     T3("Sales Input Empty BPJS Input", "Tanda Tangan Sales", "Ikhsan"),
@@ -37,11 +37,23 @@ public enum TestCase {
     T6("Sales Input No KTP less than 16 Input", "Tanda Tangan Sales", "Ikhsan"),
     T7("Sales Input Empty Alamat Input", "Tanda Tangan Sales", "Ikhsan"),
     T8("Sales Kota KTP different with Faskes Tujuan", "Tanda Tangan Sales", "Ikhsan"),
-
     T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan"),
-//
-    T10("Sales Simpan Data", "Tanda Tangan Sales", "Ikhsan");
-
+    T10("Sales Simpan Data", "Tanda Tangan Sales", "Ikhsan"),
+    N1("Filter Data with Invalid date","New Sales Page","Astrin"),
+    N2("Filter Data Valid","New Sales Page", "Astrin"),
+    N3("Reset Filter Data","New Sales Page", "Astrin"),
+    N4("Search Data without input keyword","New Sales Page", "Astrin"),
+    N5("Search Data with input alphabet","New Sales Page", "Astrin"),
+    N6("Search Data with input numeric","New Sales Page", "Astrin"),
+    N7("Search Data with input symbol","New Sales Page", "Astrin"),
+    N8("User Refresh data","New Sales Page", "Astrin"),
+    N9("Check action signature","New Sales Page", "Astrin"),
+    N10("Check action view","New Sales Page", "Astrin"),
+    N11("Update data without data","New Sales Page", "Astrin"),
+    N12("Cancel data existing","New Sales Page", "Astrin"),
+    N13("Update data","New Sales Page", "Astrin"),
+    N14("Delete document existing","New Sales Page", "Astrin"),
+    N15("Reupload document existing","New Sales Page", "Astrin");
 
 
     private String testCaseName, module, author;
