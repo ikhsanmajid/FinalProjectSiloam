@@ -1,9 +1,12 @@
 package com.juaracoding.pages;
 
+import com.juaracoding.drivers.DriverSingleton;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -32,6 +35,14 @@ public class AdminViewExportPage {
     WebElement table;
 
     private WebDriver driver;
+    private final Actions actions;
+
+    public AdminViewExportPage(){
+        this.driver = DriverSingleton.getDriver();
+        this.actions = new Actions(this.driver);
+        PageFactory.initElements(driver, this);
+    }
+
     public void clickHomeNavMenu(){
         this.homeNavMenu.click();
     }

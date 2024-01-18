@@ -73,12 +73,12 @@ public class AdminViewExportTest {
     }
     @And("Enter End date 1 Januari 2024")
     public void enter_end_date_1_januari_2024(){
-        adminViewExportPage.setStartDate("2024-01-01");
+        adminViewExportPage.setEndDate("2024-01-01");
         extentTest.log(LogStatus.PASS,"Enter Endt date 1 Januari 2024");
     }
     @And("Enter End date 31 Januari 2024")
     public void enter_end_date_31_januari_2024(){
-        adminViewExportPage.setStartDate("2024-01-31");
+        adminViewExportPage.setEndDate("2024-01-31");
         extentTest.log(LogStatus.PASS,"Enter End date 31 Januari 2024");
     }
     @Then("Message start date fill out this")

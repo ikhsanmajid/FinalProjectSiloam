@@ -143,6 +143,8 @@ public class SalesInputPage {
     @FindBy(xpath = "//div[@role='alert']")
     WebElement ttdSaveSuccessMsg;
 
+    @FindBy(xpath = "//div/table/tbody/tr/td[3]")
+    List<WebElement> listTglSubmit;
 
 
 
