@@ -38,8 +38,25 @@ public enum TestCase {
     T7("Sales Input Empty Alamat Input", "Tanda Tangan Sales", "Ikhsan"),
     T8("Sales Kota KTP different with Faskes Tujuan", "Tanda Tangan Sales", "Ikhsan"),
 
-    T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan");
+    T9("Sales Input Empty Alasan Input", "Tanda Tangan Sales", "Ikhsan"),
 //    T10("Sales Input Valid Input", "Input Data Sales", "Ikhsan"),
+
+    N1("Filter Data with Invalid date","New Sales Page","Astrin"),
+    N2("Filter Data Valid","New Sales Page", "Astrin"),
+    N3("Reset Filter Data","New Sales Page", "Astrin"),
+    N4("Search Data without input keyword","New Sales Page", "Astrin"),
+    N5("Search Data with input alphabet","New Sales Page", "Astrin"),
+    N6("Search Data with input numeric","New Sales Page", "Astrin"),
+    N7("Search Data with input symbol","New Sales Page", "Astrin"),
+    N8("User Refresh data","New Sales Page", "Astrin"),
+    N9("Check action signature","New Sales Page", "Astrin"),
+    N10("Check action view","New Sales Page", "Astrin"),
+    N11("Update data without data","New Sales Page", "Astrin"),
+    N12("Cancel data existing","New Sales Page", "Astrin"),
+    N13("Update data","New Sales Page", "Astrin"),
+    N14("Delete document existing","New Sales Page", "Astrin"),
+    N15("Reupload document existing","New Sales Page", "Astrin");
+
 
     private String testCaseName, module, author;
 
