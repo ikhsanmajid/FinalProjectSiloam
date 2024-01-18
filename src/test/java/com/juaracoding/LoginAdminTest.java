@@ -1,6 +1,7 @@
 package com.juaracoding;
 
 import com.juaracoding.drivers.DriverSingleton;
+import com.juaracoding.pages.AdminHomePage;
 import com.juaracoding.pages.LoginPage;
 import com.juaracoding.pages.SalesHomePage;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -17,6 +18,7 @@ import org.testng.Assert;
 public class LoginAdminTest {
     private static WebDriver driver;
     private static LoginPage loginPage = new LoginPage();
+    private static AdminHomePage AdminHomePage = new AdminHomePage();
     private static SalesHomePage salesHomePage = new SalesHomePage();
     private static ExtentTest extentTest;
     public LoginAdminTest(){
@@ -53,9 +55,17 @@ public class LoginAdminTest {
         Assert.assertEquals(salesHomePage.getUserText(), "Administrator");
         extentTest.log(LogStatus.PASS, "Admin login successful");
     }
-    @Then("Message harap isi bidang ini")
-    public void message_harap_isi_bidang_ini(){
-        String realMsg = loginPage.getValidationNameMsg();
+    @Then("Message username harap isi bidang ini")
+    public void message_username_harap_isi_bidang_ini(){
+        String realMsg = loginPage.getUsernameMsg();
+        String expMsg = "Please fill out this field.";
+        System.out.println(realMsg);
+        System.out.println(expMsg);
+        Assert.assertEquals(realMsg,expMsg, "Message harap isi bidang ini");
+    }
+    @Then("Message password harap isi bidang ini")
+    public void message_password_harap_isi_bidang_ini(){
+        String realMsg = loginPage.getPasswordMsg();
         String expMsg = "Please fill out this field.";
         System.out.println(realMsg);
         System.out.println(expMsg);
@@ -103,6 +113,12 @@ public class LoginAdminTest {
         String passwordValue = loginPage.getPasswordValue();
         String passwordExpected = "1234567890123456";
         Assert.assertEquals(passwordValue,passwordExpected, "password length cannot increased");
+    }
+    @Then("Message Wrong Username or Password")
+    public void message_wrong_username_or_password(){
+        String msgExpect = "Message Wrong Username or Password";
+        String msgActual = loginPage.getUsernameMsg();
+        Assert.assertEquals(msgActual,msgExpect,"Message Wrong Username or Password");
     }
     @AfterAll
     public static void finish(){
