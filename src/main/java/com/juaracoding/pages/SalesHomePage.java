@@ -16,6 +16,9 @@ public class SalesHomePage {
     @FindBy(xpath = "//span[normalize-space()='Input']")
     WebElement inputPage;
 
+    @FindBy(xpath = "//span[normalize-space()='New']")
+    WebElement NewPage;
+
     private WebDriver driver;
     private final Actions actions;
 
@@ -37,4 +40,9 @@ public class SalesHomePage {
     public void clickInputPage(){
         actions.click(inputPage).perform();
     }
+
+    public void clickNewPage(){
+        actions.click(NewPage).perform();
+    }
+
 }
