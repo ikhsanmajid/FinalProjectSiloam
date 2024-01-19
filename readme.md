@@ -15,3 +15,7 @@ Project Tugas Akhir QA RPA JuaraCoding<br/>
 5. Modul Upload Dokumen (Sales)
 6. Modul Tanda Tangan (Sales)
 7. Modul New (Sales)
+
+=== Link ===<br/>
+PPT : https://www.canva.com/design/DAF59CwHPhY/7Da5PW3-LmyYVDF52k1N-g/edit
+SIT : https://docs.google.com/spreadsheets/d/13EVKjEBx6hQTs0XvUxOKzKzTibdLsVk7Qe7YYbasG3Y/edit#gid=377401445

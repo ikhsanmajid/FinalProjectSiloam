@@ -19,6 +19,7 @@ public class SalesNewTest {
 
     private static WebDriver driver;
     private static SalesNewPage salesNewPage = new SalesNewPage();
+    private static LoginPage loginPage = new LoginPage();
     private static ExtentTest extentTest;
 //    private static WebDriver driver;
 //    private static ExtentTest extentTest;
@@ -155,6 +156,8 @@ public class SalesNewTest {
     @And("User click submit button")
     public void user_click_submit_button(){
         salesNewPage.clickBtnSubmit();
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
     }
 
     @And("User click save button")
@@ -198,5 +201,24 @@ public class SalesNewTest {
         Assert.assertEquals(salesNewPage.getErrorMsgAlamat(), "Field Alasan Harus Diisi!");
         extentTest.log(LogStatus.PASS, "User Validation Alamat Empty");
     }
+
+    @When("Sales click user button")
+    public void sales_click_user_button(){
+        salesNewPage.clickUserBtn();
+        extentTest.log(LogStatus.PASS, "Sales click user button");
+    }
+
+    @When("Sales click logout button")
+    public void sales_click_logout_button(){
+        salesNewPage.logoutBtnClick();
+        extentTest.log(LogStatus.PASS, "Sales click logout button");
+    }
+
+    @Then("Sales redirect to login page")
+    public void sales_redirect_to_login_page(){
+        Assert.assertEquals(loginPage.checkRedirectToLogin(), "DIKA | SILOAM");
+        extentTest.log(LogStatus.PASS, "Sales redirect to login page");
+    }
+
 
 }

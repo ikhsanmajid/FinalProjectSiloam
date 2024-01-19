@@ -69,8 +69,9 @@ Feature: Sales New Page
     Then View data
 
   Scenario: Update data without data
-    Given User click page
-    When User click action view
+    Given User click menu New
+    When User click page
+    And User click action view
     And User click edit button
     And User input empty keyword
     And User click save button
@@ -105,4 +106,6 @@ Feature: Sales New Page
     Then View data
 
     Scenario: Sales Logout Website
-      When Sales
+      When Sales click user button
+      And Sales click logout button
+      Then Sales redirect to login page

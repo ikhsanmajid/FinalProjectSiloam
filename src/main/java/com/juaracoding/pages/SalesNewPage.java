@@ -77,6 +77,11 @@ public class SalesNewPage {
     @FindBy(xpath= "//a[@class='btn btn-primary']")
     WebElement btnSubmit;
 
+    @FindBy(xpath = "//a[@class='dropdown-toggle']")
+    WebElement userBtn;
+
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    WebElement logoutBtn;
 
     public void delay(int d){
         try{
@@ -197,5 +202,13 @@ public class SalesNewPage {
 
     public String getErrorMsgAlamat(){
         return this.errorMessageAlamat.getText();
+    }
+
+    public void clickUserBtn(){
+        this.userBtn.click();
+    }
+
+    public void logoutBtnClick(){
+        this.logoutBtn.click();
     }
 }

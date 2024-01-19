@@ -53,8 +53,26 @@ public enum TestCase {
     N12("Cancel data existing","New Sales Page", "Astrin"),
     N13("Update data","New Sales Page", "Astrin"),
     N14("Delete document existing","New Sales Page", "Astrin"),
-    N15("Reupload document existing","New Sales Page", "Astrin");
-
+    N15("Reupload document existing","New Sales Page", "Astrin"),
+    N16("Logout Sales", "Login Sales", "Ikhsan"),
+    A1("Admin not input username and password", "Login Admin", "Yanuar"),
+    A2("Admin Input only username", "Login Admin", "Yanuar"),
+    A3("Admin input invalid username and password", "Login Admin", "Yanuar"),
+    A4("Admin input valid username capital letters and valid password capital letters", "Login Admin", "Yanuar"),
+    A5("Admin input valid username capital letters and valid password", "Login Admin", "Yanuar"),
+    A6("Admin input valid username and valid password capital letters", "Login Admin", "Yanuar"),
+    A7("Admin input password more than 16 char", "Login Admin", "Yanuar"),
+    A8("Admin input valid username and invalid password", "Login Admin", "Yanuar"),
+    A9("Admin input invalid username and valid password", "Login Admin", "Yanuar"),
+    A10("Admin Input username dan password valid", "Login Admin", "Yanuar"),
+    VE1("Filter data Januari 2024", "View & Export Admin", "Yanuar"),
+    VE2("Start date empty and end date empty", "View & Export Admin", "Yanuar"),
+    VE3("Start date is longer than end date", "View & Export Admin", "Yanuar"),
+    VE4("Fill only start date", "View & Export Admin", "Yanuar"),
+    VE5("Fill only end date", "View & Export Admin", "Yanuar"),
+    VE6("Clear start date and end date", "View & Export Admin", "Yanuar"),
+    VE7("Clear empty start date and empty end date", "View & Export Admin", "Yanuar"),
+    VE8("Filter data and view data Januari 2024", "View & Export Admin", "Yanuar");
 
     private String testCaseName, module, author;
 
