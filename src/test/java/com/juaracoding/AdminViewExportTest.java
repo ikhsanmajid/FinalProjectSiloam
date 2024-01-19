@@ -78,23 +78,57 @@ public class AdminViewExportTest {
     }
     @And("Enter End date 31 Januari 2024")
     public void enter_end_date_31_januari_2024(){
-        adminViewExportPage.setStartDate("2024-01-31");
+        adminViewExportPage.setEndDate("2024-01-31");
         extentTest.log(LogStatus.PASS,"Enter End date 31 Januari 2024");
     }
     @Then("Message start date fill out this")
     public void message_start_date_fill_out_this(){
         String actualMsg = adminViewExportPage.getStartDatedMsg();
-        String expectMsg = "fill out this";
+        String expectMsg = "Please fill out this field.";
         Assert.assertEquals(actualMsg, expectMsg, "Message start date fill out this");
     }
     @Then("Message end date fill out this")
     public void message_end_date_fill_out_this(){
-        String actualMsg = adminViewExportPage.getStartDatedMsg();
-        String expectMsg = "fill out this";
+        String actualMsg = adminViewExportPage.getEndDatedMsg();
+        String expectMsg = "Please fill out this field.";
         Assert.assertEquals(actualMsg, expectMsg, "Message end date fill out this");
     }
     @Then("Shows Valid Data")
     public void show_valid_data(){
-        adminViewExportPage.buka();
+        String table = adminViewExportPage.openTable();
+        if (!table.trim().isEmpty()){
+            extentTest.log(LogStatus.PASS, "Shows Valid Data");
+        }
+    }
+
+    @Then("Does not shown any data")
+    public void does_not_show_any_data(){
+        String table = adminViewExportPage.openTable();
+        if (table.trim().isEmpty()){
+            extentTest.log(LogStatus.PASS, "Does not shown any data");
+        }
+    }
+    @Then("start date and end date are empty")
+    public void start_date_end_date_are_empty(){
+        String startDateText = adminViewExportPage.startDateValue();
+        String endDateText = adminViewExportPage.endDateValue();
+        if(startDateText.trim().isEmpty() && endDateText.trim().isEmpty()){
+            extentTest.log(LogStatus.PASS, "start date and end date are empty");
+        }
+    }
+    @And("Click view")
+        public void click_view(){
+            int n = 0;
+            adminViewExportPage.clickViewBtn(n);
+            extentTest.log(LogStatus.PASS, "Click view");
+        }
+
+    // https://dev.ptdika.com/siloam/bd/export_data/do_view/1311
+    @Then("Direct to View Data Page")
+    public void direct_to_view_data_page(){
+        String expectedUrl = "https://dev.ptdika.com/siloam/bd/export_data/do_view/1312";
+        String actualUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualUrl, expectedUrl, "Click View and Export");
+
     }
 }
