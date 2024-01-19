@@ -23,7 +23,7 @@ Feature: Filter and Refresh
     And Click End date
     And Enter End date 1 Januari 2024
     And Click filter button
-    Then Do not shown any data
+    Then Does not shown any data
 
   Scenario:  Fill only start date
     Given Admin home
@@ -66,4 +66,4 @@ Feature: Filter and Refresh
     And Enter End date 31 Januari 2024
     And Click filter button
     And Click view
-    Then Shows Valid Data
+    Then Direct to View Data Page

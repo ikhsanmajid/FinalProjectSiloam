@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.swing.*;
 import java.util.List;
 
 public class AdminViewExportPage {
@@ -35,6 +36,10 @@ public class AdminViewExportPage {
     WebElement table;
 
     private WebDriver driver;
+
+
+
+
     private final Actions actions;
 
     public AdminViewExportPage(){
@@ -43,11 +48,12 @@ public class AdminViewExportPage {
         PageFactory.initElements(driver, this);
     }
 
+
     public void clickHomeNavMenu(){
         this.homeNavMenu.click();
     }
-    public void buka(){
-        System.out.println(table.getText());
+    public String openTable(){
+        return this.table.getText();
     }
     public void clickStartDate(){
         this.startDate.click();
@@ -91,5 +97,11 @@ public class AdminViewExportPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String message = (String) js.executeScript("return arguments[0].validationMessage;", this.endDate);
         return message;
+    }
+    public String startDateValue(){
+        return this.startDate.getText();
+    }
+    public String endDateValue(){
+        return this.endDate.getText();
     }
 }
